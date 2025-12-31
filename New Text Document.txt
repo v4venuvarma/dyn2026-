@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Year Wishes</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #87CEEB; /* Sky blue background */
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+  }
+
+  /* Envelope */
+  .envelope {
+    width: 150px;
+    height: 100px;
+    background: #fff;
+    border: 2px solid #333;
+    border-radius: 5px;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s;
+  }
+
+  .envelope.open {
+    transform: rotateX(180deg);
+  }
+
+  /* Doraemon image */
+  .doraemon {
+    position: absolute;
+    bottom: 150px;
+    width: 200px;
+    display: none;
+    animation: pop 1s forwards;
+  }
+
+  @keyframes pop {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  /* Glowing text */
+  .wish {
+    color: #fff;
+    font-size: 2em;
+    text-align: center;
+    margin-top: 20px;
+    text-shadow: 0 0 5px #ff0, 0 0 10px #ff0, 0 0 20px #ff0;
+    display: none;
+  }
+
+  /* Falling hearts */
+  .heart {
+    position: absolute;
+    color: red;
+    font-size: 20px;
+    animation: fall 5s linear infinite;
+  }
+
+  @keyframes fall {
+    0% { transform: translateY(-50px) rotate(0deg); opacity:1;}
+    100% { transform: translateY(100vh) rotate(360deg); opacity:0;}
+  }
+</style>
+</head>
+<body>
+
+<div class="envelope" id="envelope">Tap Me</div>
+
+<img src="dny.jpg" class="doraemon" id="doraemon" alt="Doraemon">
+
+<div class="wish" id="wish"></div>
+
+<script>
+  const envelope = document.getElementById('envelope');
+  const doraemon = document.getElementById('doraemon');
+  const wish = document.getElementById('wish');
+
+  const message = "Happy New Year 2025 🎉\nMay your year be filled with joy, success, and beautiful moments 💙";
+
+  envelope.addEventListener('click', () => {
+    envelope.classList.add('open');
+    doraemon.style.display = 'block';
+    wish.style.display = 'block';
+    typingEffect(message, wish);
+    createHearts();
+  });
+
+  // Typing effect
+  function typingEffect(text, element) {
+    element.innerHTML = "";
+    let i = 0;
+    function type() {
+      if (i < text.length) {
+        element.innerHTML += text[i] === '\n' ? '<br>' : text[i];
+        i++;
+        setTimeout(type, 100);
+      }
+    }
+    type();
+  }
+
+  
+</script>
+
+</body>
+</html>

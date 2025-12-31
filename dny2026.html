@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tap to Open 💙</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ===== Background ===== */
+body {
+  height: 100vh;
+  background: linear-gradient(to bottom, #cce7ff, #7bbcff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* ===== Falling Hearts ===== */
+.heart {
+  position: absolute;
+  top: -10px;
+  font-size: 18px;
+  animation: fall linear infinite;
+  color: #1e90ff;
+  text-shadow: 0 0 10px rgba(30,144,255,0.9);
+  opacity: 0.8;
+}
+
+@keyframes fall {
+  0% { transform: translateY(0); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translateY(110vh); opacity: 0; }
+}
+
+/* ===== Tap Screen ===== */
+.tap-screen {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(to bottom, #7bbcff, #3f87ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.tap-box {
+  background: white;
+  padding: 30px 40px;
+  border-radius: 25px;
+  font-size: 20px;
+  color: #1e90ff;
+  box-shadow: 0 0 30px rgba(30,144,255,0.8);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+/* Hide after tap */
+.tap-screen.hide {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1.2);
+}
+
+/* ===== Card ===== */
+.card {
+  background: white;
+  width: 330px;
+  padding: 25px;
+  border-radius: 22px;
+  text-align: center;
+  box-shadow:
+    0 0 15px rgba(30,144,255,0.4),
+    0 0 40px rgba(30,144,255,0.8);
+  animation: pop 1s ease, glow 3s infinite;
+  z-index: 10;
+}
+
+@keyframes pop {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes glow {
+  0%,100% { box-shadow: 0 0 15px rgba(30,144,255,0.4); }
+  50% { box-shadow: 0 0 45px rgba(30,144,255,1); }
+}
+
+/* ===== Image ===== */
+.card img {
+  width: 180px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* ===== Text ===== */
+h2 {
+  color: #1e90ff;
+  margin: 10px 0;
+  text-shadow: 0 0 8px rgba(30,144,255,0.8);
+}
+
+p {
+  color: black;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(100,180,255,0.6);
+}
+h1 {
+  color: #1565c0;
+  margin: 10px 0;
+  text-shadow: 0 0 8px rgba(30,144,255,0.8);
+}
+
+.magic {
+  font-weight: bold;
+  color: #0d47a1;
+}
+
+.footer {
+  font-size: 11px;
+  color: gray;
+  margin-top: 10px;
+}
+.tap-text{
+  animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce{
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Hearts -->
+<span class="heart" style="left:10%; animation-duration:8s;">💙</span>
+<span class="heart" style="left:30%; animation-duration:10s;">💙</span>
+<span class="heart" style="left:50%; animation-duration:7s;">💙</span>
+<span class="heart" style="left:70%; animation-duration:9s;">💙</span>
+<span class="heart" style="left:90%; animation-duration:11s;">💙</span>
+
+<!-- Tap Screen -->
+<div class="tap-screen" onclick="openGift()">
+  <div class="tap-text">
+    <h1 style="font-size: 42px; letter-spacing: 1px;">💙Tap to Open💙</h1>
+<p style="width: 180px; margin: auto; font-size: 20px; opacity: 0.8;">
+  surprise is loading...
+</p>
+  </div>
+</div>
+
+
+<!-- Card -->
+<div class="card">
+  <img src="dny.jpg">
+  <h2>Happy New Year 2026 💙</h2>
+  <p>
+    May your year be filled with joy,<br>
+    success, and beautiful moments 💙
+  </p>
+  <p class="magic">Just like Doraemon's magic ✨</p>
+  <div class="footer">Made with 💙 by Aradhya</div>
+</div>
+
+<script>
+function openGift() {
+  document.querySelector('.tap-screen').classList.add('hide');
+}
+</script>
+
+</body>
+</html>
